@@ -1,9 +1,9 @@
 (ns takeaways.services.data-access.in-memory-storage
   (:require [mount.core :as mount :refer [defstate]]))
 
-(def ^:private default-takeaway (atom #{}))
+(def ^:private default-takeaways (atom #{}))
 
-(defstate add-takeaway :start (fn [title]
-                                (swap! default-takeaway conj title)))
+(defstate add-takeaway :start (fn [takeaway]
+                                (swap! default-takeaways conj takeaway)))
 
-(defstate get-takeaways :start (fn [] @default-takeaway))
+(defstate get-takeaways :start (fn [] @default-takeaways))

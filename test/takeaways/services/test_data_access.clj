@@ -8,10 +8,10 @@
                       (test-fn)))
 
 (deftest add-a-takeaway
-  (is (contains? (do
-                   (add-takeaway "the title")
-                   (get-takeaways))
-                 "the title")))
+  (is (some #{"the title"}
+            (do
+              (add-takeaway "the title")
+              (get-takeaways)))))
 
 (deftest dups
   (let [title "t"
