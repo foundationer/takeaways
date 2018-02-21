@@ -20,7 +20,5 @@
                (filter #(= title %) (get-takeaways)))]
     (is (<= 2 (count ts)))))
 
-
-;; currently add-takeaway returns the takeaways.
-;; that does not seem right. It is a behavior that's
-;; not required at the moment.
+(deftest add-takeaway-returns-nil
+  (is (nil? (add-takeaway "t"))))
