@@ -4,11 +4,12 @@
 
 (defrecord Takeaway [id title])
 
-(defn- get-new-id [] 42)
+(defn- get-new-id [] (.toString (java.util.UUID/randomUUID)))
 
 (defstate add-takeaway :start
           (fn [title]
             (ims/add-takeaway (->Takeaway (get-new-id) title))) )
+
 (defstate get-takeaways :start
           (fn []
             (map :title (ims/get-takeaways))))
